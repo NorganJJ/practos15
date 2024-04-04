@@ -5,9 +5,6 @@
 
 <module name="Checker">
     <module name="TreeWalker">
-        <module name="LineLength">
-            <property name="max" value="120"/>
-        </module>
         <module name="AvoidStarImport"/>
         <module name="RegexpSingleline">
             <property name="format" value="System\.out\.println\(\)"/>
