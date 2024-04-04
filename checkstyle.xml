@@ -4,7 +4,6 @@
         "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
-    <module name="AvoidStarImport"/>
     <module name="Regexp">
         <property name="format" value="System\.out\.println\(\)"/>
         <property name="message" value="Avoid using 'System.out.println()' in your code"/>
