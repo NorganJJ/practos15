@@ -19,6 +19,9 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
+      - name: Change permission for mvnw
+        run: chmod +x mvnw
+
       - name: Check style project
         run: |
           ./mvnw spring-javaformat:apply
