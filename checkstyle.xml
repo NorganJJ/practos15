@@ -5,9 +5,13 @@
 
 <module name="Checker">
     <module name="TreeWalker">
-        <module name="AvoidStarImport"/>
         <module name="LineLength">
             <property name="max" value="120"/>
+        </module>
+        <module name="AvoidStarImport"/>
+        <module name="RegexpSingleline">
+            <property name="format" value="System\.out\.println\(\)"/>
+            <property name="message" value="Avoid using 'System.out.println()' in your code"/>
         </module>
     </module>
 </module>
