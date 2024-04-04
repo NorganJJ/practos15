@@ -4,17 +4,14 @@
         "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
+    <module name="JavadocMethod"/>
+    <module name="CyclomaticComplexity">
+        <property name="max" value="10"/>
+    </module>
+    <module name="AvoidStarImport"/>
     <module name="TreeWalker">
         <module name="LineLength">
             <property name="max" value="120"/>
         </module>
-        <module name="JavadocMethod"/>
-        <module name="CyclomaticComplexity">
-            <property name="max" value="10"/>
-        </module>
-        <module name="AvoidStarImport"/>
     </module>
 </module>
-
-
-
