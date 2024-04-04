@@ -24,4 +24,4 @@ jobs:
 
       - name: Check style project
         run: |
-          ./mvnw spring-javaformat:apply
+          ./mvnw checkstyle:check
