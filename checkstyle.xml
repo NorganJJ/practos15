@@ -1,0 +1,6 @@
+<module name="LineLength">
+    <property name="max" value="100"/>
+</module>
+
+
+
