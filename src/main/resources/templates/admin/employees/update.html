@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение пользователя</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Изменение пользователя</h1>
+<form th:method="post" th:action="@{'/admin/employees/edit/' + ${user.id}}" th:object="${user}">
+    <input hidden="hidden" type="text" id="password" name="password" th:field="*{password}" required>
+    <label for="datebirth">Дата рождения:</label>
+    <input type="date" id="datebirth" name="datebirth" th:field="*{dateBirth}" required>
+    <label for="email">Почта:</label>
+    <input type="text" id="email" name="email" maxlength="40" th:field="*{email}" required>
+    <label for="height">Рост:</label>
+    <input type="number" id="height" name="height" min="0" max="300" th:field="*{height}" >
+    <label for="weight">Вес:</label>
+    <input type="number" id="weight" name="weight" min="0" max="250" th:field="*{weight}" >
+    <div class="form-group">
+        <select th:field="*{position}" id="month" class="custom-select">
+            <option value="">Выберите должность</option>
+            <option value="Тренер">Тренер</option>
+            <option value="Администратор">Администратор</option>
+            <option value="Менеджер">Менеджер</option>
+        </select>
+    </div>
+    <label for="surname">Фамилия:</label>
+    <input type="text" id="surname" name="surname" maxlength="30" th:field="*{surname}" >
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" maxlength="30" th:field="*{name}" >
+    <label for="secondname">Отчество:</label>
+    <input type="text" id="secondname" name="secondname" maxlength="30" th:field="*{secondname}" >
+    <label for="image">Ссылка на фотографию:</label>
+    <input type="text" id="image" name="image" th:field="*{image}" required>
+    <label>Профиль деятельности</label>
+    <div class="form-group">
+        <select th:field="*{sportProfile}" id="sportProfile" class="custom-select">
+            <option value="">Выберите тип тренировки</option>
+            <option th:each="sp : ${profiles}" th:value="${sp.id}" th:text="${sp.name}"></option>
+        </select>
+        <span class="error-message" th:if="${#fields.hasErrors('sportProfile')}" th:errors="*{sportProfile}"></span>
+    </div>
+    <div th:each="role : ${roles}">
+        <input type="checkbox" th:id="${role}"
+               th:name="${'roles[]'}" th:value="${role}"
+               th:checked="${#lists.contains(user.roles,role)}">
+
+        <label th:text="${role}"></label>
+    </div>
+    <input type="submit" value="Сохранить" id="confirm" class="btn-save">
+</form>
+<a href="/admin/employees" class="btn-back">Отмена</a>
+<script>
+    document.getElementById("confirm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите подтвердить отправку формы?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+</body>
+</html>

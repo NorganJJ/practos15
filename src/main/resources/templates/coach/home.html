@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главное меню тренера</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        div {
+            background-color: darkorange;
+            border: 1px solid darkslategray;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-left: 500px;
+            margin-right: 500px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Главная страница</h1>
+</header>
+<nav>
+    <ul class="menu">
+        <li><a href="/coach/alltrainings" class="btn">Список тренировок</a></li>
+        <li><a href="/coach/event" class="btn">Список событий</a></li>
+        <li><a href="/coach/task" class="btn">Список заявок</a></li>
+        <li><a href="/coach/trainplan" class="btn">Список тренировочных планов</a></li>
+    </ul>
+</nav>
+<h1>Рейтинг</h1>
+<div class="main"><p align="center">ФИО: <span th:text="${user.surname + ' ' + user.name + ' ' + user.secondname}"></span></p>
+    <p align="center">Рейтинг: <span th:text="${stat.midrate}"></span></p></div>
+
+<a th:href="@{'/homepage'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

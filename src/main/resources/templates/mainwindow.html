@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Спорт-клуб</title>
+    <style>
+        /* Стили для меню */
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: darkorange;
+            border-color: #c82333;
+            border-style: ridge;
+            border-bottom-left-radius: 200px;
+            border-bottom-right-radius: 200px;
+        }
+
+        li {
+            float: left;
+            margin-right: 90px;
+            margin-left: 90px;
+            font-size: 17px;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: coral;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333333;
+            line-height: 1.5;
+            text-indent: 26px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background-color: darkorange;
+            border-radius: 20px;
+            border-style: ridge;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background-color: darkorange;
+            border-radius: 20px;
+            border-color: white;
+            border-style: ridge;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        div {
+            background-color: darkorange;
+            border: 1px solid darkslategray;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-left: 300px;
+            margin-right: 300px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            font-family: Arial, sans-serif;
+            margin-left: 160px;
+        }
+
+        /* Стиль заголовка таблицы */
+        th {
+            background-color: darkorange;
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        /* Стиль ячейки таблицы */
+        td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+            background-color: lightgrey;
+        }
+
+        /* Стиль нечетных строк таблицы */
+        tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* Стиль при наведении на ячейку таблицы */
+        td:hover {
+            background-color: #e8e8e8;
+        }
+
+        /* Стиль футера таблицы */
+        tfoot td {
+            font-weight: bold;
+        }
+
+        /* Стиль ссылки в ячейке таблицы */
+        td a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        /* Стиль для выделения выбранной строки */
+        tr.selected {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .fig {
+            text-align: center;
+            /* Выравнивание по центру */
+        }
+
+        .btn-save {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: limegreen;
+            color: #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .btn-save:hover {
+            background-color: darkorange;
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body th:style="'background: url(/img/fon.jpg);'">
+<header>
+    <nav>
+        <ul>
+            <li><a href="#">Главная</a></li>
+            <li><a href="/subscribeshow">Абонементы</a></li>
+            <li><a href="/allcoaches">Список тренеров</a></li>
+            <li><a href="/profile">Мой профиль</a></li>
+            <li><a href="/homepage">Для сотрудников</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero-section">
+    <h1 align="center" style="border: 5px #cfc solid; box-shadow: 0 0 10px #444; border-color: white">Добро пожаловать в спорт-клуб</h1>
+    <p align="center">Мы предлагаем широкий спектр спортивных услуг для всех возрастов и уровней подготовки</p>
+    <p align="center"><a href="/allcoaches"><input type="button" class="btn-save" value="Оставить заявку"/></a> </p>
+</section>
+
+<section class="services-section">
+    <h2 align="center">Наши услуги</h2>
+    <div class="service">
+        <p class="fig"><img th:src="@{/img/gym.jpg}" alt="Зал" width="800" height="400" style="border-radius: 0 500px; border: 5px #cfc solid; box-shadow: 0 0 10px #444; border-color: darkorange"></p>
+        <h3>Зал для гимнастики</h3>
+        <p>Мы предлагаем зал для занятий по легкой гимнастике для улучшения навыков с максимальной безопасностью при тренировках и удобным для использования инвентарём. В наших гиманстических залах не редко проходят мероприятия такие как: танцевальный кружок, субботняя йога и т.д.</p>
+        <p align="center"><a href="/subscribeshow"><input type="button" class="btn-save" value="Просмотр абонементов"/></a> </p>
+    </div>
+    <div class="service">
+        <p class="fig"><img th:src="@{/img/zal.jpg}" alt="Зал для гимнастики" width="800" height="400" style="border-radius: 0 500px; border: 5px #cfc solid; box-shadow: 0 0 10px #444; border-color: darkorange"></p>
+        <h3>Фитнес</h3>
+        <p>Мы предлагаем различные фитнес-программы и тренажеры для повышения физической формы в наших залах с максимальной безопасностью при тренировках и удобстве в использовании. В наших залах не редко проходят мероприятия такие как: боксёрский поединок, турнир по армрестлингу и т.д.</p>
+        <p align="center"><a href="/subscribeshow"><input type="button" class="btn-save" value="Просмотр абонементов"/></a> </p>
+    </div>
+</section>
+
+<section class="schedule-section">
+    <h2 align="center">Расписание мероприятий</h2>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Дата и время</th>
+            <th>Тренер-выступающий</th>
+            <th>Запись</th>
+        </tr>
+        <tr th:each=" event : ${events}">
+            <td th:text="${event.name}"></td>
+            <td th:text="${#temporals.format(event.dateTime, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${event.coachevent != null ? event.coachevent.surname + ' ' +  event.coachevent.name + ' ' + event.coachevent.secondname : ''}"></td>
+            <td>
+                <form th:method="get" th:action="@{'/mainwindow/' + 'addmark/' +${event.id}}" id="deleteCategoryForm">
+                    <input type="submit" value="Записаться" class="btn-save">
+                </form>
+            </td>
+        </tr>
+
+    </table>
+</section>
+
+<footer>
+    <p>© 2021 Спорт-клуб. Все права защищены.</p>
+    <img th:src="@{/img/emb.png}" width="40" height="40" />
+</footer>
+
+<script>
+    document.getElementById("deleteCategoryForm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите записаться на данное мероприятие?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+</body>
+</html>

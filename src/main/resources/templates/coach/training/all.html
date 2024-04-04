@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Список плановых тренировок</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Дата и время</th>
+        <th>Код плана тренировки</th>
+        <th>Тип тренировки</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each=" training : ${trainings}">
+        <td th:text="${training.id}"></td>
+        <td th:text="${#temporals.format(training.dateTime, 'dd.MM.yyyy HH:mm')}"></td>
+        <td th:text="${training.trainplan != null ? training.trainplan.id : ''}"></td>
+        <td th:text="${training.traintype != null ? training.traintype.name : ''}"></td>
+        <td>
+            <a th:href="@{'/coach'+'/training/' + 'edit/' + ${training.id}}" class="btn-edit">Закрыть тренировку</a>
+            <a th:href="@{'/coach'+'/training/' + 'delete/' + ${training.id}}" class="btn-delete" th:method="delete">Удалить</a>
+        </td>
+    </tr>
+</table>
+<a href="/coach/training/add" class="btn-new">Создать</a>
+<a th:href="@{'/coaches/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

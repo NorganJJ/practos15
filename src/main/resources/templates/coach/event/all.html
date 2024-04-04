@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание мероприятий</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Расписание мероприятий</h1>
+<table>
+    <tr>
+        <th>Код события</th>
+        <th>Дата и время</th>
+        <th>Тренер</th>
+        <th>Кол-во посетителей</th>
+        <th>Название</th>
+    </tr>
+    <tr th:each=" event : ${events}">
+        <td th:text="${event.id}"></td>
+        <td th:text="${#temporals.format(event.dateTime, 'dd.MM.yyyy HH:mm')}"></td>
+        <td th:text="${event.coachevent != null ? event.coachevent.email : ''}"></td>
+        <td th:text="${event.kolvo}"></td>
+        <td th:text="${event.name}"></td>
+    </tr>
+</table>
+<a th:href="@{'/coaches/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

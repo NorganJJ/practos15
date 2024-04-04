@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Список планов</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Осталось тренировок</th>
+        <th>Почта пользователя</th>
+        <th>ФИО пользователя</th>
+    </tr>
+    <tr th:each=" plan : ${plans}">
+        <td th:text="${plan.id}"></td>
+        <td th:text="${plan.kolvo}"></td>
+        <td th:text="${plan.userplan != null ? plan.userplan.email : ''}"></td>
+        <td th:text="${plan.userplan != null ? plan.userplan.surname + ' ' + plan.userplan.name + ' ' + plan.userplan.secondname : ''}"></td>
+    </tr>
+</table>
+<a th:href="@{'/coaches/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

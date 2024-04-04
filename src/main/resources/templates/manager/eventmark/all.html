@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список записей</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Список записей</h1>
+<table>
+    <tr>
+        <th>Мероприятие</th>
+        <th>Почта посетителя</th>
+    </tr>
+    <tbody>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.name}"></td>
+        <td>
+                            <span th:each="user : ${event.userevent}">
+                                <span th:text="${user.email}"></span><br>
+                            </span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{'/manager/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

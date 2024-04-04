@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .login-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2 class="text-center mb-4">Регистрация</h2>
+    <div th:if="${message}">
+        <p STYLE="color: #c82333">Пользователь с такой почтой уже существует</p>
+    </div>
+    <div th:if="${messagee}">
+        <p STYLE="color: #c82333">Введите существующую электронную почту</p>
+    </div>
+    <form th:action="@{/registration}" method="post" th:align="center">
+        <div class="form-group">
+            <label for="email"> Логин : </label>
+            <input type="text" name="email" id="email" placeholder="Эл. почта" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="password"> Пароль : </label>
+            <input type="password" minlength="6" maxlength="30" name="password" id="password" class="form-control" required/>
+        </div>
+        <input type="submit" value="Регистрация" id="confirm" class="btn btn-primary btn-block"/>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById("confirm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите создать аккаунт?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание тренировок</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Расписание разовых тренировок</h1>
+<table>
+    <tr>
+        <th>Код тренировки</th>
+        <th>Дата и время</th>
+        <th>Тренер</th>
+        <th>Посетитель</th>
+        <th>Тип тренировки</th>
+    </tr>
+    <tr th:each=" once : ${oncetrainings}">
+        <td th:text="${once.id}"></td>
+        <td th:text="${#temporals.format(once.dateTime, 'dd-MM-yyyy HH:mm')}"></td>
+        <td th:text="${once.coachonce != null ? once.coachonce.email : ''}"></td>
+        <td th:text="${once.useronce != null ? once.useronce.email : ''}"></td>
+        <td th:text="${once.traintypeonce != null ? once.traintypeonce.name : ''}"></td>
+    </tr>
+</table>
+<h1>Расписание плановых тренировок</h1>
+<table>
+    <tr>
+        <th>Код тренировки</th>
+        <th>Дата и время</th>
+        <th>Код плана</th>
+        <th>Тип тренировки</th>
+    </tr>
+    <tr th:each=" training : ${trainings}">
+        <td th:text="${training.id}"></td>
+        <td th:text="${#temporals.format(training.dateTime, 'dd-MM-yyyy HH:mm')}"></td>
+        <td th:text="${training.trainplan != null ? training.trainplan.id : ''}"></td>
+        <td th:text="${training.traintype != null ? training.traintype.name : ''}"></td>
+    </tr>
+</table>
+<a href="/coach/training/" class="btn-new">Список плановых тренировок</a>
+<a href="/coach/oncetraining/" class="btn-new">Список разовых тренировок</a>
+<a th:href="@{'/coaches/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

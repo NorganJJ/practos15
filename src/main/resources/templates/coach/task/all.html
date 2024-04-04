@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Список заявок тренировок</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Дата и время</th>
+        <th>Пользователь</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each=" task : ${tasks}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${#temporals.format(task.dateTime, 'dd.MM.yyyy HH:mm')}"></td>
+        <td th:text="${task.usertask != null ? task.usertask.email : ''}"></td>
+        <td>
+            <a th:href="@{'/coach'+'/task/' + 'info/' + ${task.id}}" class="btn-edit">Подробнее</a>
+            <a th:href="@{'/coach'+'/task/' + 'delete/' + ${task.id}}" class="btn-delete" th:method="delete">Удалить</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{'/coaches/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

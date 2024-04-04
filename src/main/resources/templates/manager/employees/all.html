@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список мероприятий</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<form method="get" action="/manager/employees/search">
+    <p align="center">Поиск данных по названию</p>
+    <input type="text" class="search-input" name="email" placeholder="название">
+    <button type="submit" class="search-button">🔍</button>
+</form>
+<h1>Список Сотрудников</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>ФИО</th>
+        <th>Почта</th>
+        <th>Должность</th>
+    </tr>
+    <tr th:each=" user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.surname + ' ' + user.name + ' ' + user.secondname}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.position}"></td>
+    </tr>
+</table>
+<a th:href="@{'/manager/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

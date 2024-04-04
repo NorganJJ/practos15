@@ -1,0 +1,293 @@
+/* Обнуление стилей и базовые стили страницы */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(img/fon.jpg);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Заголовок страницы */
+h1 {
+    background-color: coral;
+    color: #fff;
+    text-align: center;
+    padding: 15px 15px 15px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+/* Заголовок страницы */
+header {
+    background-color: coral;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/* Навигационное меню */
+nav {
+    text-align: center;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.menu a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: darkorange;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid #3333;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.menu a.btn:hover {
+    background-color: darkorange;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    .menu {
+        text-align: center;
+    }
+    .menu li {
+        margin-right: 0;
+        margin-bottom: 10px;
+        display: block;
+    }
+    .menu a.btn {
+        margin-right: 0;
+    }
+}
+
+/* Таблица с пользователями */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table th {
+    background-color: darkorange;
+    color: #fff;
+    margin-inside: 20px;
+}
+
+/* Строки таблицы */
+table tr:nth-child(odd) {
+    background-color: whitesmoke;
+}
+
+table tr:nth-child(even) {
+    background-color: coral;
+}
+
+/* Действия в таблице */
+table td a {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: darkorange;
+    border-radius: 4px;
+    margin-inside: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+table td a:hover {
+    background-color: darkorange;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-inside: 20px;
+}
+
+/* Кнопка "Создать нового пользователя" */
+.btn-new {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: darkorange;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-new:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Строка информации о пользователе */
+p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Кнопка "Редактировать" */
+/* Контейнер с информацией о пользователе */
+.user-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Строка информации о пользователе */
+.user-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Кнопка "Редактировать" */
+.btn-edit {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: darkorange;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-edit:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Кнопка "Удалить" */
+.btn-delete {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Кнопка "Вернуться к списку пользователей" */
+.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: darkorange;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-back:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Форма редактирования пользователя */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Лейблы и поля ввода */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Кнопка "Сохранить" */
+.btn-save {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: darkorange;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-save:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Кнопка "Отмена" */
+.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: darkorange;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

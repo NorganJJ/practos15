@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование мероприятия</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Редактирование мероприятия</h1>
+<form th:method="post" th:action="@{'/manager/' + '/subscribe/' + 'edit/' + ${subscribe.id}}" th:object="${subscribe}">
+    <div class="form-group">
+        <select th:field="*{month}" id="month" class="custom-select">
+            <option value="">Выберите месяц</option>
+            <option value="Январь">Январь</option>
+            <option value="Февраль">Февраль</option>
+            <option value="Март">Март</option>
+            <option value="Апрель">Апрель</option>
+            <option value="Май">Май</option>
+            <option value="Июнь">Июнь</option>
+            <option value="Июль">Июль</option>
+            <option value="Август">Август</option>
+            <option value="Сентябрь">Сентябрь</option>
+            <option value="Октябрь">Октябрь</option>
+            <option value="Ноябрь">Ноябрь</option>
+            <option value="Декабрь">Декабрь</option>
+        </select>
+    </div>
+    <label>Посетитель</label>
+    <div class="form-group">
+        <select th:field="*{user}" id="user" class="custom-select">
+            <option value="">Выберите тренера</option>
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.surname + ' ' + user.name + ' ' + user.secondname}"></option>
+        </select>
+        <span class="error-message" th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></span>
+    </div>
+    <input type="submit" value="Сохранить" class="btn-save" id="confirm">
+</form>
+<a href="/manager/subscribe" class="btn-back">Отмена</a>
+<script>
+    document.getElementById("confirm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите подтвердить отправку формы?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+</body>
+</html>

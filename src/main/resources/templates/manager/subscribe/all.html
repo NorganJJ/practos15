@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список абонементов</title>
+    <link rel="stylesheet" href="/style.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+
+
+    </style>
+</head>
+<body>
+<form method="get" action="/manager/subscribe/search">
+    <p align="center">Поиск данных по названию месяца</p>
+    <input type="text" class="search-input" name="month" placeholder="название">
+    <button type="submit" class="search-button">🔍</button>
+</form>
+<h1>Список абонементов</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Месяц</th>
+        <th>Посетитель</th>
+        <th>Статус</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each=" sub : ${subscribes}">
+        <td th:text="${sub.id}"></td>
+        <td th:text="${sub.month}"></td>
+        <td th:text="${sub.user != null ? sub.user.email : ''}"></td>
+        <td th:text="${sub.status}"></td>
+        <td>
+            <a th:href="@{'/manager'+'/subscribe/' + 'edit/' + ${sub.id}}" class="btn-edit">Редактировать</a>
+            <a th:href="@{'/manager'+'/subscribe/' + 'close/' + ${sub.id}}" class="btn-edit">Закрыть абонемент</a>
+            <a th:href="@{'/manager'+'/subscribe/' + 'delete/' + ${sub.id}}" class="btn-delete" th:method="delete">Удалить</a>
+        </td>
+    </tr>
+</table>
+<a href="subscribe/add" class="btn-new">Создать</a>
+<h1>Диаграммы абонементов</h1>
+<div align="center" style="width: 1000px;">
+    <div id="chart_div"></div>
+    <div id="piechart" style="width: 900px; height: 500px; margin-top: 20px"></div>
+</div>
+<script th:inline="javascript">
+    var real_data = /*[[${chartData}]]*/'noValue';
+    $(document).ready(function() {
+        google.charts.load('current', {
+            packages : [ 'corechart', 'bar' ]
+        });
+        google.charts.setOnLoadCallback(drawColumnChart);
+        google.charts.setOnLoadCallback(drawPieChart);
+    });
+    function drawColumnChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'Subs');
+        Object.keys(real_data).forEach(function(key) {
+            data.addRow([ key, real_data[key] ]);
+        });
+        var options = {
+            title : 'Статистика',
+            hAxis : {
+                title : 'Месяц',
+            },
+            vAxis : {
+                title : 'Кол-во абонементов'
+            }
+        };
+        var chart = new google.visualization.ColumnChart(document
+            .getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+    function drawPieChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'Subs');
+        Object.keys(real_data).forEach(function(key) {
+            data.addRow([ key, real_data[key] ]);
+        });
+        var options = {
+            title : 'Статистика'
+        };
+        var chart = new google.visualization.PieChart(document
+            .getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>
+<a th:href="@{'/manager'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание нового профиля</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Создание нового профиля</h1>
+<form th:method="post" th:action="@{'/admin/infotables/sportprofile/edit/' + ${profile.id}}" th:object="${profile}">
+    <label for="name">Название:</label>
+    <input type="text" id="name" name="name" maxlength="50" th:field="*{name}" required>
+    <input type="submit" value="Сохранить" id="confirm" class="btn-save">
+</form>
+<a href="/admin/infotables" class="btn-back">Отмена</a>
+<script>
+    document.getElementById("confirm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите подтвердить отправку формы?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+</body>
+</html>

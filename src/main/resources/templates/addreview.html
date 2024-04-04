@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Спорт-клуб</title>
+    <style>
+        /* Стили для меню */
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: darkorange;
+            border-color: #c82333;
+            border-style: ridge;
+            border-bottom-left-radius: 200px;
+            border-bottom-right-radius: 200px;
+        }
+
+        li {
+            float: left;
+            margin-right: 90px;
+            margin-left: 90px;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: coral;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333333;
+            line-height: 1.5;
+            text-indent: 26px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background-color: darkorange;
+            border-radius: 20px;
+            border-style: ridge;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background-color: darkorange;
+            border-radius: 20px;
+            border-color: white;
+            border-style: ridge;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        div {
+            background-color: darkorange;
+            border: 1px solid darkslategray;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-left: 500px;
+            margin-right: 500px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Стиль заголовка таблицы */
+        th {
+            background-color: darkorange;
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        /* Стиль ячейки таблицы */
+        td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+            background-color: darkgrey;
+        }
+
+        /* Стиль нечетных строк таблицы */
+        tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* Стиль при наведении на ячейку таблицы */
+        td:hover {
+            background-color: #e8e8e8;
+        }
+
+        /* Стиль футера таблицы */
+        tfoot td {
+            font-weight: bold;
+        }
+
+        /* Стиль ссылки в ячейке таблицы */
+        td a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        /* Стиль для выделения выбранной строки */
+        tr.selected {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .fig {
+            text-align: center;
+            /* Выравнивание по центру */
+        }
+
+        .btn-save {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: limegreen;
+            color: #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .btn-save:hover {
+            background-color: darkorange;
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: forestgreen;
+            color: #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body th:style="'background: url(/img/fon.jpg);'">
+
+<section class="hero-section">
+    <h1 align="center" style="border: 5px #cfc solid; box-shadow: 0 0 10px #444; border-color: white">Написание отзыва</h1>
+</section>
+<div class="main" th:object="${review}">
+    <form th:action="@{'/review/add/' + ${review.coachstats.id}}" th:object="${review}" th:method="post">
+        <p class="fig"><label for="rating">Рейтинг:</label></p>
+        <p class="fig"><input type="number" id="rating" name="rating" min="1" max="5" th:field="*{rating}" required></p>
+        <p class="fig"><label for="text">Текст отзыва:</label></p>
+        <textarea id="text" maxlength="1000" name="text" th:field="*{text}" style="border: 5px #cfc solid; box-shadow: 0 0 10px #444; border-color: white; width: 590px; height: 400px;" required ></textarea>
+        <p class="fig"><input type="submit" id="confirm" value="Сохранить" class="btn-save"></p>
+    </form>
+</div>
+
+<footer>
+    <p>© 2021 Спорт-клуб. Все права защищены.</p>
+    <img th:src="@{/img/emb.png}" width="40" height="40" style="margin-left: 26px"/>
+</footer>
+<script>
+    document.getElementById("confirm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите добавить отзыв?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+
+</body>
+</html>

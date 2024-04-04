@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель администратора</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <h1>Панель администратора</h1>
+</header>
+<nav>
+    <ul class="menu">
+        <li><a href="/coaches" class="btn">Тренер</a></li>
+        <li><a href="/manager" class="btn">Менеджер</a></li>
+        <li><a href="/admin" class="btn">Админ</a></li>
+        <li><a href="/mainwindow" class="btn">Пользователь</a></li>
+    </ul>
+</nav>
+<a th:href="@{'/mainwindow/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

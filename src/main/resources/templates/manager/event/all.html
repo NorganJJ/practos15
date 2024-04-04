@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список мероприятий</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<form method="get" action="/manager/event/search">
+    <p align="center">Поиск данных по названию</p>
+    <input type="text" class="search-input" name="name" placeholder="название">
+    <button type="submit" class="search-button">🔍</button>
+</form>
+<h1>Список мероприятий</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Дата и время</th>
+        <th>Количество записанных человек</th>
+        <th>Тренер-выступающий</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each=" event : ${events}">
+        <td th:text="${event.id}"></td>
+        <td th:text="${event.name}"></td>
+        <td th:text="${#temporals.format(event.dateTime, 'dd-MM-yyyy HH:mm')}"></td>
+        <td th:text="${event.kolvo}"></td>
+        <td th:text="${event.coachevent != null ? event.coachevent.email : ''}"></td>
+        <td>
+            <a th:href="@{'/manager'+'/event/' + 'edit/' + ${event.id}}" class="btn-edit">Редактировать</a>
+            <a th:href="@{'/manager'+'/event/' + 'delete/' + ${event.id}}" class="btn-delete" th:method="delete">Удалить</a>
+        </td>
+    </tr>
+</table>
+<a href="event/add" class="btn-new">Создать</a>
+<a th:href="@{'/manager'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

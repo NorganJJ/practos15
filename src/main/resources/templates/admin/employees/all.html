@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<form method="get" action="/admin/employees/search">
+    <p align="center">Поиск пользователя по почте</p>
+    <input type="text" class="search-input" name="email" placeholder="Эл. почта">
+    <button type="submit" class="search-button">🔍</button>
+</form>
+<h1>Пользователи</h1>
+<table>
+    <tr>
+        <th>Код пользователя</th>
+        <th>ФИО</th>
+        <th>Возраст</th>
+        <th>Почта</th>
+        <th>Рост</th>
+        <th>Вес</th>
+        <th>Профиль деятельности</th>
+        <th>Должность</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each=" user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.surname + ' ' + user.name + ' ' + user.secondname}"></td>
+        <td th:text="${#dates.format(user.dateBirth, 'dd-MM-yyyy')}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.height}"></td>
+        <td th:text="${user.weight}"></td>
+        <td th:text="${user.sportProfile != null ? user.sportProfile.name : ''}"></td>
+        <td th:text="${user.position}"></td>
+        <td>
+            <a th:href="@{'/admin/employees/' + 'edit/' + ${user.id}}" class="btn-edit">Изменить</a>
+            <a th:href="@{'/admin/employees/' + 'delete/' + ${user.id}}" id="deleteButton" class="btn-delete" th:method="delete">Удалить</a>
+
+        </td>
+    </tr>
+</table>
+<a th:href="@{'/admin/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

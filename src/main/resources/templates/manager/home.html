@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главное меню менеджера</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <h1>Главная страница</h1>
+</header>
+<nav>
+    <ul class="menu">
+        <li><a href="/manager/employees" class="btn">Список сотрудников</a></li>
+        <li><a href="/manager/event" class="btn">Список событий</a></li>
+        <li><a href="/manager/eventmark" class="btn">Список записей на мероприятия</a></li>
+        <li><a href="/manager/subscribe" class="btn">Список абонементов</a></li>
+        <li><a href="/manager/trainhistory" class="btn">История тренировок</a></li>
+        <!-- Добавьте кнопки для других страниц по аналогии -->
+    </ul>
+</nav>
+<a align="center" th:href="@{'/homepage'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

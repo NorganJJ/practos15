@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение пользователя</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Изменение пользователя</h1>
+<form th:method="post" th:action="@{'/profile/update/' + ${user.id}}" th:object="${user}">
+    <input hidden="hidden" type="text" id="password" name="password" th:field="*{password}" required>
+    <label for="email">Почта:</label>
+    <input type="text" id="email" name="email" maxlength="40" th:field="*{email}" required>
+    <label for="date">Дата рождения:</label>
+    <input type="date" id="date" name="date" th:field="*{dateBirth}" required>
+    <label for="height">Рост:</label>
+    <input type="number" id="height" name="height" min="0" max="300" th:field="*{height}" required>
+    <label for="weight">Вес:</label>
+    <input type="number" id="weight" name="weight" min="0" max="250" th:field="*{weight}" required>
+    <label for="surname">Фамилия:</label>
+    <input type="text" id="surname" name="surname" th:field="*{surname}" required>
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required>
+    <label for="secondname">Отчество:</label>
+    <input type="text" id="secondname" name="secondname" th:field="*{secondname}" required>
+    <label for="image">Ссылка на фото:</label>
+    <input type="text" id="image" name="image" th:field="*{image}" required>
+    <input type="submit" value="Применить изменения" id="confirm" class="btn-save">
+</form>
+<a href="/profile" class="btn-back">Отмена</a>
+</body>
+<script>
+    document.getElementById("confirm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите подтвердить действие?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+</html>

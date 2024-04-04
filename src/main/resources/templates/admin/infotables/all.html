@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Справочники</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Тип тренировки</h1>
+<table>
+    <tr>
+        <th>Код типа тренировки</th>
+        <th>Название</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each=" type : ${types}">
+        <td th:text="${type.id}"></td>
+        <td th:text="${type.name}"></td>
+        <td>
+            <a th:href="@{'/admin/infotables/traintype/' + 'edit/' + ${type.id}}" class="btn-edit">Изменить</a>
+            <a th:href="@{'/admin/infotables/traintype/' + 'delete/' + ${type.id}}" class="btn-delete" th:method="delete">Удалить</a>
+        </td>
+    </tr>
+</table>
+<a href="/admin/infotables/traintype/add" class="btn-new">Создать</a>
+<h1>Импорт типов тренировки</h1>
+<form action="/admin/infotables/uploadTT" method="post" enctype="multipart/form-data">
+    <input type="file" name="file1" id="file1" class="btn-edit"/>
+    <input type="submit" name="submit" class="btn-save" value="Подтвердить" />
+</form>
+<h1>Профиль деятельности</h1>
+<table>
+    <tr>
+        <th>Код профиля</th>
+        <th>Название</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each=" sp : ${profiles}">
+        <td th:text="${sp.id}"></td>
+        <td th:text="${sp.name}"></td>
+        <td>
+            <a th:href="@{'/admin/infotables/sportprofile/' + 'edit/' + ${sp.id}}" class="btn-edit">Изменить</a>
+            <a th:href="@{'/admin/infotables/sportprofile/' + 'delete/' + ${sp.id}}" class="btn-delete" th:method="delete">Удалить</a>
+        </td>
+    </tr>
+</table>
+<a href="/admin/infotables/sportprofile/add" class="btn-new">Создать</a>
+<h1>Импорт профилей</h1>
+<form action="/admin/infotables/uploadSP" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" id="file" class="btn-edit" />
+    <input type="submit" name="submit" class="btn-save" value="Подтвердить" />
+</form>
+<a th:href="@{'/admin/'}" id="back" class="btn-delete">Обратно</a>
+</body>
+</html>

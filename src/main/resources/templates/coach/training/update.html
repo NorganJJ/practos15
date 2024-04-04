@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание новой тренировки</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Создание новой тренировки</h1>
+<form th:method="post" th:action="@{'/coach/training/edit/' + ${training.id}}" th:object="${training}">
+    <input hidden="hidden" type="datetime-local" id="datetime" name="datetime" th:field="*{dateTime}" required>
+    <input hidden="hidden" type="text" id="trainplan" name="trainplan" th:field="*{trainplan}" required>
+    <label for="coach_mark">Заметка клиенту:</label>
+    <input type="text" id="coach_mark" maxlength="1000" name="coach_mark" th:field="*{coachMark}" required>
+    <label>Тип тренировки</label>
+    <div class="form-group">
+        <select th:field="*{traintype}" id="traintype" class="custom-select">
+            <option value="">Выберите тип тренировки</option>
+            <option th:each="traintype : ${types}" th:value="${traintype.id}" th:text="${traintype.name}"></option>
+        </select>
+        <span class="error-message" th:if="${#fields.hasErrors('traintype')}" th:errors="*{traintype}"></span>
+    </div>
+    <input type="submit" value="Закрыть тренировку" class="btn-save" id="confirm">
+</form>
+<a href="/coach/training" class="btn-back">Отмена</a>
+<script>
+    document.getElementById("confirm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите подтвердить отправку формы?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+</body>
+</html>

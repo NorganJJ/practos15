@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание нового плана</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Создание нового плана</h1>
+<form action="/coach/task/add" th:object="${trainplan}" method="post">
+    <label for="coach_id">Код тренера:</label>
+    <input type="number" id="coach_id" name="coach_id" th:field="*{coachplan}" required>
+    <label for="kolvo">Количество тренировок:</label>
+    <input type="number" min="5" max="30" id="kolvo" name="kolvo" th:field="*{kolvo}" required>
+    <label>Пользователь</label>
+    <div class="form-group">
+        <select th:field="*{userplan}" id="userplan" class="custom-select">
+            <option value="">Выберите пользователя</option>
+            <option th:each="userplan : ${users}" th:value="${userplan.id}" th:text="${userplan.email}"></option>
+        </select>
+        <span class="error-message" th:if="${#fields.hasErrors('userplan')}" th:errors="*{userplan}"></span>
+    </div>
+    <input type="submit" value="Сохранить" class="btn-save" id="confirm">
+</form>
+<script>
+    document.getElementById("confirm").addEventListener("submit", function(event) {
+        if (!confirm("Вы уверены, что хотите подтвердить отправку формы?")) {
+            event.preventDefault(); // Отмена отправки формы
+        }
+    });
+</script>
+</body>
+</html>
